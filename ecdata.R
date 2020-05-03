@@ -16,6 +16,9 @@ ecdata <- ecdata %>% group_by(countriesAndTerritories) %>%
 ecdata <- ecdata %>% group_by(countriesAndTerritories) %>% 
   mutate(cum.deaths = order_by(dateR, cumsum(deaths)))
 
+ecdata <- rename(ecdata, country = countriesAndTerritories)
 
-saveRDS(ecdata, "ecdc/ecdata.rds")
+saveRDS(ecdata, paste("ecdata", max(ecdata$dateR), sep = "_"))
+
+
 
